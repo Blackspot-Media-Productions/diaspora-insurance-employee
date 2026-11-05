@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const payload = await request.json();
 
     const payloadAsArray = Object.entries(payload).map(([key, value]) => {
-      const newValue = Array.isArray(value) ? value.join(", ") : value;
+      const newValue = Array.isArray(value) ? value.map((v) => `${v.platform}: ${v.rating} \n`) : value;
       return { key, value: newValue }
     })
 
